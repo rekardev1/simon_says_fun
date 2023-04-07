@@ -119,7 +119,11 @@ class _SimonSaysAppState extends State<SimonSaysApp> {
         itemCount: 4,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _playGame,
+        onPressed: () {
+          if (!_gameStarted) {
+            _playGame();
+          }
+        },
         child: const Icon(Icons.play_arrow),
       ),
     );
