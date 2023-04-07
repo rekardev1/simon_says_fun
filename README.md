@@ -1,4 +1,4 @@
-# simon_says_fun
+# Simon Says Fun
 
 A new Flutter project.
 
