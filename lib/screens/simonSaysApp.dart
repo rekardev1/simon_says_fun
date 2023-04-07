@@ -25,20 +25,17 @@ class _SimonSaysAppState extends State<SimonSaysApp> {
 
   void _handleTileTap(int tileIndex) async {
     if (_gameStarted) {
-      _playerPattern.add(tileIndex);
-      setState(() {
-        _currentTile = tileIndex;
-      });
-      await Future.delayed(const Duration(milliseconds: 100));
-      setState(() {
-        _currentTile = null;
-      });
+      if (_playerPattern.contains(tileIndex)) {
+        var index = _playerPattern.indexOf(tileIndex);
+        _playerPattern.removeRange(index, _playerPattern.length);
+      } else {
+        _playerPattern.add(tileIndex);
+      }
 
       if (_playerPattern.length == _game.pattern.length) {
-        SnackBar snackBar;
         if (const ListEquality().equals(_playerPattern, _game.pattern)) {
           _currentLevel++;
-          snackBar = SnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: const Text('You win!', style: TextStyle(color: Colors.green)),
             action: SnackBarAction(
               label: 'Play again',
@@ -46,10 +43,10 @@ class _SimonSaysAppState extends State<SimonSaysApp> {
                 _playGame();
               },
             ),
-          );
+          ));
         } else {
           _currentLevel = 1;
-          snackBar = SnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: const Text('You lose!', style: TextStyle(color: Colors.red)),
             action: SnackBarAction(
               label: 'Play again',
@@ -57,11 +54,10 @@ class _SimonSaysAppState extends State<SimonSaysApp> {
                 _playGame();
               },
             ),
-          );
+          ));
         }
         _gameStarted = false;
         _playerPattern.clear();
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     }
   }
@@ -92,18 +88,32 @@ class _SimonSaysAppState extends State<SimonSaysApp> {
         title: Text('Simon Says Game: Current Level: $_currentLevel'),
       ),
       body: GridView.builder(
+        padding: EdgeInsets.all(10),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
         ),
         itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () => _handleTileTap(index),
-            child: Container(
-              color: _gameStarted && _currentTile == index
-                  ? Color.fromARGB(255, 42, 30, 255)
-                  : Color.fromARGB(255, 108, 122, 248),
-              margin: const EdgeInsets.all(8),
-            ),
+          return Container(
+            margin: const EdgeInsets.all(10),
+            child: TextButton(
+                style: TextButton.styleFrom(
+                  splashFactory: NoSplash.splashFactory,
+                  backgroundColor: _gameStarted && _currentTile == index ? Colors.blue : Colors.white,
+                  foregroundColor: _gameStarted && _currentTile == index ? Colors.white : Colors.blue,
+                ),
+                onPressed: () async {
+                  setState(() {
+                    _currentTile = index;
+                  });
+                  await Future.delayed(const Duration(milliseconds: 50));
+                  _handleTileTap(index);
+                  setState(() {
+                    _currentTile = null;
+                  });
+                },
+                child: _playerPattern.isNotEmpty && _playerPattern.contains(index)
+                    ? Text('${_playerPattern.indexOf(index) + 1}', style: const TextStyle(fontSize: 50))
+                    : const SizedBox.shrink()),
           );
         },
         itemCount: 4,

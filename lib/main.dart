@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:simon_says_fun/views/SimonSaysApp.dart';
+import 'package:simon_says_fun/screens/SimonSaysApp.dart';
 
 void main() {
   runApp(MaterialApp(
