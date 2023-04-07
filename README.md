@@ -1,3 +1,3 @@
 # Simon Says Fun
 
-A simple tap tTile challenge game 
+A simple tap tile challenge game 
