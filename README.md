@@ -1,6 +1,6 @@
 # Simon Says Fun
 
-Simon Says Fun is a simple game app that challenges the user's memory by flashing a sequence of tiles and asking the user to repeat the sequence in the correct order.
+Simon Says Fun is a simple game that challenges the user's memory by flashing a sequence of tiles and asking the user to repeat the sequence in the correct order.
 
 # Setup Dev Environment
 
@@ -17,8 +17,8 @@ Simon Says Fun is a simple game app that challenges the user's memory by flashin
 - After pressed all tiles, the game will end and you'll be shown a message indicating whether you won or lost.
 - Tap the "Play again" button to start a new game.
 
-<img src="https://user-images.githubusercontent.com/64738859/230603784-d1f3c5d8-7a8e-4efa-97c7-1513cd29ce04.gif" width="350">
+<img src="https://user-images.githubusercontent.com/64738859/230603784-d1f3c5d8-7a8e-4efa-97c7-1513cd29ce04.gif" width="300">
 
 - If you made a mistake, tap the tile again to undo or tap the taped tiles before it to undo multiple taps
 
-<img src="https://user-images.githubusercontent.com/64738859/230605791-39690633-8f23-4f60-9fb9-f4fbf13bebd3.gif" width="350">
+<img src="https://user-images.githubusercontent.com/64738859/230605791-39690633-8f23-4f60-9fb9-f4fbf13bebd3.gif" width="300">
