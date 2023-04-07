@@ -13,7 +13,7 @@ Simon Says Fun is a simple game app that challenges the user's memory by flashin
 
 - The tiles will start to flash randomly. Try to remember the order in which they flash.
 - Tap the tiles in the same order that they flashed.
-- If you get the order correct, the game will continue with a longer sequence of tiles.
+- If you get the order correct, you go to the next level and the flashing will get faster.
 - After pressed all tiles, the game will end and you'll be shown a message indicating whether you won or lost.
 - Tap the "Play again" button to start a new game.
 
