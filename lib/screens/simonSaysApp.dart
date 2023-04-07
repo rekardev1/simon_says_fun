@@ -85,7 +85,7 @@ class _SimonSaysAppState extends State<SimonSaysApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Simon Says Game: Current Level: $_currentLevel'),
+        title: Text('Simon Says Fun: Current Level: $_currentLevel'),
       ),
       body: GridView.builder(
         padding: EdgeInsets.all(10),
