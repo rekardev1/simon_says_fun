@@ -38,7 +38,7 @@ class _SimonSaysAppState extends State<SimonSaysApp> {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: const Text('You win!', style: TextStyle(color: Colors.green)),
             action: SnackBarAction(
-              label: 'Play again',
+              label: 'Next level',
               onPressed: () {
                 _playGame();
               },
