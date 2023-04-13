@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
@@ -108,7 +110,9 @@ class _SimonSaysAppState extends State<SimonSaysApp> {
                   child: TextButton(
                       style: TextButton.styleFrom(
                         splashFactory: NoSplash.splashFactory,
-                        backgroundColor: _gameStarted && _currentTile == index ? Colors.blue : Colors.white,
+                        backgroundColor: _gameStarted && _currentTile == index
+                            ? Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0)
+                            : Colors.white,
                         foregroundColor: _gameStarted && _currentTile == index ? Colors.white : Colors.blue,
                       ),
                       onPressed: () async {
