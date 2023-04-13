@@ -85,38 +85,51 @@ class _SimonSaysAppState extends State<SimonSaysApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Simon Says Fun: Current Level: $_currentLevel'),
+        title: const Text('Simon Says Fun'),
       ),
-      body: GridView.builder(
-        padding: EdgeInsets.all(10),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-        ),
-        itemBuilder: (context, index) {
-          return Container(
-            margin: const EdgeInsets.all(10),
-            child: TextButton(
-                style: TextButton.styleFrom(
-                  splashFactory: NoSplash.splashFactory,
-                  backgroundColor: _gameStarted && _currentTile == index ? Colors.blue : Colors.white,
-                  foregroundColor: _gameStarted && _currentTile == index ? Colors.white : Colors.blue,
-                ),
-                onPressed: () async {
-                  setState(() {
-                    _currentTile = index;
-                  });
-                  await Future.delayed(const Duration(milliseconds: 50));
-                  _handleTileTap(index);
-                  setState(() {
-                    _currentTile = null;
-                  });
-                },
-                child: _playerPattern.isNotEmpty && _playerPattern.contains(index)
-                    ? Text('${_playerPattern.indexOf(index) + 1}', style: const TextStyle(fontSize: 50))
-                    : const SizedBox.shrink()),
-          );
-        },
-        itemCount: 4,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Text('Current Level: $_currentLevel', style: const TextStyle(fontSize: 20)),
+          ),
+          SizedBox(
+            height: 400.0,
+            child: GridView.builder(
+              padding: const EdgeInsets.all(10),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+              ),
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: const EdgeInsets.all(10),
+                  child: TextButton(
+                      style: TextButton.styleFrom(
+                        splashFactory: NoSplash.splashFactory,
+                        backgroundColor: _gameStarted && _currentTile == index ? Colors.blue : Colors.white,
+                        foregroundColor: _gameStarted && _currentTile == index ? Colors.white : Colors.blue,
+                      ),
+                      onPressed: () async {
+                        setState(() {
+                          _currentTile = index;
+                        });
+                        await Future.delayed(const Duration(milliseconds: 50));
+                        _handleTileTap(index);
+                        setState(() {
+                          _currentTile = null;
+                        });
+                      },
+                      child: _playerPattern.isNotEmpty && _playerPattern.contains(index)
+                          ? Text('${_playerPattern.indexOf(index) + 1}', style: const TextStyle(fontSize: 50))
+                          : const SizedBox.shrink()),
+                );
+              },
+              itemCount: 4,
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
