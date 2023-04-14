@@ -22,3 +22,7 @@ Simon Says Fun is a simple game that challenges the user's memory by flashing a 
 - If you made a mistake, tap the tile again to undo or tap the taped tiles before it to undo multiple taps
 
 <img src="https://user-images.githubusercontent.com/64738859/230605791-39690633-8f23-4f60-9fb9-f4fbf13bebd3.gif" width="300">
+
+# Last Update
+<img src="https://user-images.githubusercontent.com/64738859/231949069-a5b8f0ac-dfcc-4333-baa1-72ba6da37c05.gif" width="300">
+
